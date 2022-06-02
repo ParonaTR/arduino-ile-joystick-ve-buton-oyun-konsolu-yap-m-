@@ -1,0 +1,46 @@
+#define Buton 8
+#define Buton2 9
+#define Led2 11
+#define Led 10
+
+const int SW_pin = 8; SW pinini 8 e bağladığımız için 8 i okur
+const int X_pin = 0; Analog 0 pinini Joystickin X ine bağladım
+const int Y_pin = 1; Analog 1 pinini Joystickin Y sine bağladım
+
+void setup() {
+  pinMode(SW_pin, INPUT); SW pinini giriş olarak ayarladım
+  digitalWrite(SW_pin, HIGH); SW pinini aktif olarak yazdım
+  Serial.begin(9600); Serial ekran girişini 9600 olarak ayarladım
+pinMode(Buton1, INPUT); Buton girişi olarak pin 8 i ayarladım
+pinMode(Led1, OUTPUT); Led girişi olarak pin 10 u ayarladım
+
+pinMode(Buton2, INPUT); Buton2 girişi olarak pin 0 i ayarladım
+pinMode(Led2, OUTPUT); Led2 girişi olarak pin 11 u ayarladım
+
+
+}
+
+void loop() {
+  Serial.print("Switch:  "); SW Pinini serial ekrana yazdırdım
+  Serial.print(digitalRead(SW_pin));
+  Serial.print(" | ");
+  Serial.print("X-axis: "); X pininin lokasyonunu ekrana yazdırdım
+  Serial.print(analogRead(X_pin));
+  Serial.print(" | ");
+  Serial.print("Y-axis: "); Y Pininin lokasyonunu ekrana yazdırdım
+  Serial.print(analogRead(Y_pin));
+  Serial.println(" | ");
+  delay(200);
+
+  
+  if (digitalRead(Buton) == 1) digitalWrite(Led,HIGH);  else digitalWrite(Led,LOW);
+
+// Buton 1 i aktif ise ateş değil ise ateş etme olarak ayarladım
+// Eğer aktif is e hem ateş eder hemde kırmızı ledi yakar
+
+  if (digitalRead(Buton2) == 1)digitalWrite(Led2,HIGH); else digitalWrite(Led2,LOW);
+
+// Buton 2 yi aktif ise zıpla değil ise zıplama olarak ayarladım
+// Eğer aktif ise hem zıplar hemde yeşil ledi yakar.
+}
+
